@@ -229,6 +229,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/28/js/" itemprop="url">js继承封装多态</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-28T10:08:00+08:00">
+                2019-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>主要讲es6和es5的继承方式</p>
+<h3 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h3><ul>
+<li>es6引入了class、extends、super、static<br>下面是一个继承实例子  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">  //static sCount=0 //1</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">     this.name=name; </span><br><span class="line">     this.sCount++;</span><br><span class="line">  &#125;</span><br><span class="line">  //实例方法 //2</span><br><span class="line">  getName()&#123;</span><br><span class="line">   console.log(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">  static sTest()&#123;</span><br><span class="line">    console.log(&quot;static method test&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Man extends Person&#123;</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">    super(name)//3</span><br><span class="line">    this.sex=&quot;male&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var man=new Man(&quot;Davin&quot;)</span><br><span class="line">man.getName()</span><br><span class="line">//man.sTest()</span><br><span class="line">Man.sTest()//4</span><br><span class="line">输出结果：</span><br><span class="line">Davin</span><br><span class="line">static method test</span><br><span class="line">````  </span><br><span class="line">* class相当于一个语法糖，class内定义的所有函数都会置于该类的原型当中。</span><br><span class="line">* constructor为构造函数，一个类有一个，相当于es5中构造函数标准化，负责一些初始化工作。</span><br><span class="line">* 静态方法，在类定义的外部只能通过类名调用，内部可以通过this调用，并且静态函数是会被继承的。</span><br><span class="line">### es5</span><br><span class="line">* es5继承有原型继承，构造函数继承，组合式继承，原型式继承，寄生式继承，寄生式组合继承六种方式，这里原型继承，构造函数继承，寄生式继承</span><br><span class="line">* 一.原型继承  </span><br><span class="line">简而言之，就是直接将父类的一个实例赋给子类的原型。示例如下  </span><br><span class="line"></span><br><span class="line">````  </span><br><span class="line">function Person(name)&#123;</span><br><span class="line"> this.name=name;</span><br><span class="line"> this.className=&quot;person&quot; </span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.getClassName=function()&#123;</span><br><span class="line"> console.log(this.className)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Man()&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Man.prototype=new Person();//1</span><br><span class="line">//Man.prototype=new Person(&quot;Davin&quot;);//2</span><br><span class="line">var man=new Man;</span><br><span class="line">&gt;man.getClassName()</span><br><span class="line">&gt;&quot;person&quot;</span><br><span class="line">&gt;man instanceof Person</span><br><span class="line">&gt;true  </span><br><span class="line">````  </span><br><span class="line">这种继承方式下，所有的子类实例会共享一个父类对象的实例，这种方案最大问题就是子类无法通过父类创建私有属性。比如每一个Person都有一个名字，我们在初始化每个Man的时候要指定一个不同名字，然后子类将这个名字传递给父类，对于每个man来说，保存在相应person中的name应该是不同的，但是这种方式根本做不到。  </span><br><span class="line">* 二.构造函数继承  </span><br><span class="line"></span><br><span class="line">````  </span><br><span class="line">//声明父类</span><br><span class="line">function Person(name)&#123;</span><br><span class="line"> this.name=name;</span><br><span class="line"> this.className=&quot;person&quot; </span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.getName=function()&#123;   //父类声明原型方法</span><br><span class="line"> console.log(this.name)</span><br><span class="line">&#125;</span><br><span class="line">//声明子类</span><br><span class="line">function Man(name)&#123;</span><br><span class="line">  Person.apply(this,arguments)   //继承父类</span><br><span class="line">&#125;</span><br><span class="line">var man1=new Man(&quot;Davin&quot;);   //声明第一个子类实例</span><br><span class="line">var man2=new Man(&quot;Jack&quot;);    //声明第二个子类实例</span><br><span class="line">&gt;man1.name</span><br><span class="line">&gt;&quot;Davin&quot;</span><br><span class="line">&gt;man2.name</span><br><span class="line">&gt;&quot;Jack&quot;</span><br><span class="line">&gt;man1.getName() //1 报错</span><br><span class="line">&gt;man1 instanceof Person</span><br><span class="line">&gt;true</span><br><span class="line">````  </span><br><span class="line">这种办法只能继承父类构造函数中声明的实例属性，并没有继承父类原型的属性和方法，所以就找不到getName方法，所以1处会报错。</span><br><span class="line">* 三.组合继承  </span><br><span class="line">组合继承就是：类式继承+构造函数继承</span><br></pre></td></tr></table></figure>
+<p>function Person(name){<br> this.name=name||”default name”; //1<br> this.className=”person”<br>}<br>Person.prototype.getName=function(){<br> console.log(this.name)<br>}<br>function Man(name){<br>  Person.apply(this,arguments)<br>}<br>//继承原型<br>Man.prototype = new Person();<br>var man1=new Man(“Davin”);</p>
+<blockquote>
+<p>man1.name<br>“Davin”<br>man1.getName()<br>“Davin”<br><code></code></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/conclusion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,7 +683,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
