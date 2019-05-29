@@ -229,6 +229,131 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/css3d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/29/css3d/" itemprop="url">css3d效果实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-29T19:46:19+08:00">
+                2019-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O  </p>
+<ul>
+<li>首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示  </li>
+</ul>
+<p>知识储备：<br>-transform:CSS3新增的变形功能，其优点是全过程不改变DOM性能更高。在transform下有如下几个变形样式：<br>1）.translate()   —  位置改变(平移)<br>2）.scale()   —   缩放比例<br>3）rotate()   —   旋转角度<br>4）skew()  —   倾斜(斜切)<br>以上的几个形式都支持X轴、Y轴、Z轴的变换方向。<br>但需要注意：<br>1）要使用3D变换，需要在其父级开启3D空间：transform-style: preserve-3d;<br>2）在变形过程中，会出现“抖动”效果，这时我们需要在该元素的该变形属性加初始值：transform:rotateY(0deg);<br>3）要想查看到超炫的3D效果还要设置下景深/透视，transform:perspective(800px) ;这个可以都当前元素加或给其元素父级加<br>-当设置transform:rotate(30deg);旋转角度时可指定其旋转的奇点。transform-origin: x坐标 y坐标;  </p>
+<p>一个简单的demo：</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -705,7 +830,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
