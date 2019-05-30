@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O    首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示    知识储备：-transform:CSS3新增的变形功能，其优点是全过程不改变DOM性能更高。在transform下有如下几个变形样式：1）.translate()   —  位置改变(平移)2">
+<meta name="description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O  首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示  知识储备： perspective :头饰，形成3d效果的关键，在css里面他是有数值的，我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3d效果实现">
 <meta property="og:url" content="http://yoursite.com/2019/05/29/css3d/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O    首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示    知识储备：-transform:CSS3新增的变形功能，其优点是全过程不改变DOM性能更高。在transform下有如下几个变形样式：1）.translate()   —  位置改变(平移)2">
+<meta property="og:description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O  首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示  知识储备： perspective :头饰，形成3d效果的关键，在css里面他是有数值的，我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T11:53:00.124Z">
+<meta property="og:image" content="http://note.youdao.com/noteshare?id=dd9ca4cded604d52833da2560c43be1e">
+<meta property="og:updated_time" content="2019-05-30T15:44:25.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3d效果实现">
-<meta name="twitter:description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O    首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示    知识储备：-transform:CSS3新增的变形功能，其优点是全过程不改变DOM性能更高。在transform下有如下几个变形样式：1）.translate()   —  位置改变(平移)2">
+<meta name="twitter:description" content="如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O  首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示  知识储备： perspective :头饰，形成3d效果的关键，在css里面他是有数值的，我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立">
+<meta name="twitter:image" content="http://note.youdao.com/noteshare?id=dd9ca4cded604d52833da2560c43be1e">
 
 
 
@@ -299,12 +301,20 @@
       
 
       
-        <p>如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O  </p>
+        <p>  如何利用html和css实现炫酷的3d效果呢？3d正方形，3d翻书动画O(∩_∩)O</p>
 <ul>
-<li>首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示  </li>
+<li>首先，我们来了解一下3d的坐标系，x轴在屏幕上为水平方向，y轴为垂直方向，而z轴为垂直于屏幕的方向。如图所示<br><img src="http://note.youdao.com/noteshare?id=dd9ca4cded604d52833da2560c43be1e" alt></li>
 </ul>
-<p>知识储备：<br>-transform:CSS3新增的变形功能，其优点是全过程不改变DOM性能更高。在transform下有如下几个变形样式：<br>1）.translate()   —  位置改变(平移)<br>2）.scale()   —   缩放比例<br>3）rotate()   —   旋转角度<br>4）skew()  —   倾斜(斜切)<br>以上的几个形式都支持X轴、Y轴、Z轴的变换方向。<br>但需要注意：<br>1）要使用3D变换，需要在其父级开启3D空间：transform-style: preserve-3d;<br>2）在变形过程中，会出现“抖动”效果，这时我们需要在该元素的该变形属性加初始值：transform:rotateY(0deg);<br>3）要想查看到超炫的3D效果还要设置下景深/透视，transform:perspective(800px) ;这个可以都当前元素加或给其元素父级加<br>-当设置transform:rotate(30deg);旋转角度时可指定其旋转的奇点。transform-origin: x坐标 y坐标;  </p>
-<p>一个简单的demo：</p>
+<h2 id="知识储备："><a href="#知识储备：" class="headerlink" title="知识储备："></a>知识储备：</h2><ul>
+<li>perspective :头饰，形成3d效果的关键，在css里面他是有数值的，我们可以这样理解，如果我们直接眼睛靠着物体看，物体就超大占满我们的视线，我们离它距离越来越大，它在变小，立体感也就出来了是不是，其实这个数值构造了一个我们眼睛离屏幕的距离，也就构造了一个虚拟3D假象。</li>
+<li>transform-style：perspective又来了，没错，它是css中3D的关键，transform-style默认是flat，如果你要在元素上视线3D效果的话，就必须用上transform-style: preserve-3d,否则就只是平面的变换，而不是3D的变换  </li>
+<li>transform:  rotateY(90deg)[绕y轴旋转90度]  rotateX(90deg)[绕x轴旋转90度]   rotateZ(90deg)[绕z轴旋转90度]</li>
+</ul>
+<h2 id="第一个例子：可以旋转的图片"><a href="#第一个例子：可以旋转的图片" class="headerlink" title="第一个例子：可以旋转的图片"></a>第一个例子：可以旋转的图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">  &lt;style&gt;</span><br><span class="line">   body&#123;</span><br><span class="line">      perspective: 800px;</span><br><span class="line">      transform-style: preserve-3d;</span><br><span class="line">  &#125;</span><br><span class="line">  #box&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    transform-style: preserve-3d;</span><br><span class="line">    position: relative;</span><br><span class="line">    transition: 4s;</span><br><span class="line">  &#125;</span><br><span class="line">  #box:hover&#123;</span><br><span class="line">    transform:rotateY(180deg);   //旋转动画180度</span><br><span class="line">  &#125;</span><br><span class="line">  #box .bian&#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 300px;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    position: absolute; </span><br><span class="line">  &#125;</span><br><span class="line">  .zhi1&#123;</span><br><span class="line">    background-color: red;</span><br><span class="line">    transform:rotateY(180deg);</span><br><span class="line">  &#125;</span><br><span class="line">  .zhi2&#123;</span><br><span class="line">      background-color: yellow;</span><br><span class="line">      backface-visibility: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body style=&quot;background-color:#23d19d&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;bian zhi1&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;bian zhi2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第二个：一个正方体3d旋转动画demo"><a href="#第二个：一个正方体3d旋转动画demo" class="headerlink" title="第二个：一个正方体3d旋转动画demo"></a>第二个：一个正方体3d旋转动画demo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line"></span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">        /*去除默认边距*/</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ul&#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        border: 1px solid #000;</span><br><span class="line">        box-sizing: border-box;</span><br><span class="line">        margin: 100px auto;</span><br><span class="line">        position: relative;</span><br><span class="line">        transform-style: preserve-3d;   /*将父元素设置为3d空间*/</span><br><span class="line">        transition: 50s;</span><br><span class="line">        transform:rotateX(0deg)rotateY(0deg);</span><br><span class="line">    &#125;</span><br><span class="line">    ul:hover&#123;</span><br><span class="line">        transform: rotateY(360deg) rotateX(360deg);</span><br><span class="line">    &#125;</span><br><span class="line">    ul li&#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        font-size: 60px;</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 200px;</span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 0;</span><br><span class="line">        top: 0;</span><br><span class="line">        /*修改基本样式*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(1)&#123;</span><br><span class="line">        background-color: red;</span><br><span class="line">        transform: translateX(-100px) rotateY(90deg);</span><br><span class="line">        /*将第一个l向左移动100像素，然后绕y轴旋转90度，形成左边的面*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(2)&#123;</span><br><span class="line">        background-color: green;</span><br><span class="line">        transform: translateX(100px) rotateY(90deg);</span><br><span class="line">        /*将第一个2向右移动100像素，然后绕y轴旋转90度*，形成右边的面*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(3)&#123;</span><br><span class="line">        background-color: blue;</span><br><span class="line">        transform: translateY(-100px) rotateX(90deg);</span><br><span class="line">        /*将第一个3向上移动100像素，然后绕x轴旋转90度，形成上面的面*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(4)&#123;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        transform: translateY(100px) rotateX(90deg);</span><br><span class="line">        /*将第一个4向下移动100像素，然后绕x轴旋转90度*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(5)&#123;</span><br><span class="line">        background-color: purple;</span><br><span class="line">        transform: translateZ(-100px);</span><br><span class="line">        /*将第一个5向后移动100像素，形成后面的面*/</span><br><span class="line">    &#125;</span><br><span class="line">    ul li:nth-child(6)&#123;</span><br><span class="line">        background-color: pink;</span><br><span class="line">        transform: translateZ(100px);</span><br><span class="line">        /*将第一个l向前移动100像素，形成前面的面*/</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;!--首先做好html布局，正方体有6个面，所以写了6个li--&gt;</span><br><span class="line">    &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;4&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;5&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;6&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>总结：要用css实现3d效果，重要的有transform， transform-style: preserve-3d; transition: 50s;这三个属性，通过让它围绕x，y轴旋转进而实现3d旋转效果</li>
+</ul>
 
       
     </div>
@@ -389,8 +399,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -441,6 +460,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识储备："><span class="nav-number">1.</span> <span class="nav-text">知识储备：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个例子：可以旋转的图片"><span class="nav-number">2.</span> <span class="nav-text">第一个例子：可以旋转的图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二个：一个正方体3d旋转动画demo"><span class="nav-number">3.</span> <span class="nav-text">第二个：一个正方体3d旋转动画demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
