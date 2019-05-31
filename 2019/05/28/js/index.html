@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、static下面是一个继承实例子    12345678910111213141516171819202122232425262728class Person&amp;#1">
+<meta name="description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、staticsuper:第一种情况，super作为函数调用时，代表父类的构造函数。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js继承封装多态">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/js/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、static下面是一个继承实例子    12345678910111213141516171819202122232425262728class Person&amp;#1">
+<meta property="og:description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、staticsuper:第一种情况，super作为函数调用时，代表父类的构造函数。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T12:11:27.009Z">
+<meta property="og:updated_time" content="2019-05-31T15:40:46.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js继承封装多态">
-<meta name="twitter:description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、static下面是一个继承实例子    12345678910111213141516171819202122232425262728class Person&amp;#1">
+<meta name="twitter:description" content="前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享 继承主要讲es6和es5的继承方式 es6 es6引入了class、extends、super、staticsuper:第一种情况，super作为函数调用时，代表父类的构造函数。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
 
 
 
@@ -302,7 +302,7 @@
         <p>前言：从几个月前接触到 js 以来，感觉学的不明不白，一些 js 的基础理论知识不是很清楚，现在决定痛定思痛，把这些写下来，以此巩固和分享</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>主要讲es6和es5的继承方式</p>
 <h3 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h3><ul>
-<li>es6引入了class、extends、super、static<br>下面是一个继承实例子  </li>
+<li>es6引入了class、extends、super、static<br>super:第一种情况，super作为函数调用时，代表父类的构造函数。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二种情况，super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。<br>static:类相当于实例的原型， 所有在类中定义的方法， 都会被实例继承。 如果在一个方法前， 加上static关键字， 就表示该方法不会被实例继承， 而是直接通过类来调用， 这就称为“ 静态方法”。静态方法调用直接在类上进行，而在类的实例上不可被调用。<br>下面是一个继承实例子  </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">  //static sCount=0 //1</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">     this.name=name; </span><br><span class="line">     this.sCount++;</span><br><span class="line">  &#125;</span><br><span class="line">  //实例方法 //2</span><br><span class="line">  getName()&#123;</span><br><span class="line">   console.log(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">  static sTest()&#123;</span><br><span class="line">    console.log(&quot;static method test&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Man extends Person&#123;</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">    super(name)//3</span><br><span class="line">    this.sex=&quot;male&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var man=new Man(&quot;Davin&quot;)</span><br><span class="line">man.getName()</span><br><span class="line">//man.sTest()</span><br><span class="line">Man.sTest()//4</span><br><span class="line">输出结果：</span><br><span class="line">Davin</span><br><span class="line">static method test</span><br></pre></td></tr></table></figure>
 <ul>
