@@ -229,6 +229,358 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/06/正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/06/正则表达式/" itemprop="url">正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T23:36:41+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h5><p>对于正则表达式，相信很多人都知道，但是很多人的第一感觉就是难学，因为看第一眼时，觉得完全没有规律可寻，而且全是一堆各种各样的特殊符号，完全不知所云。</p>
+<p>其实只是对正则不了解而以，了解了你就会发现，原来就这样啊正则所用的相关字符其实不多，也不难记，更不难懂，唯一难的就是组合起来之后，可读性比较差，而且不容易理解，本文旨在让大家对正则有一个基本的了解，能看得懂简单的正则表达式，写得出简单的正则表达式，用以满足日常开发中的需求即可。</p>
+<h5 id="二-什么事正则表达式"><a href="#二-什么事正则表达式" class="headerlink" title="二.什么事正则表达式"></a>二.什么事正则表达式</h5><ul>
+<li>正则表达式是一种特殊的字符串模式，用于匹配一组字符串，就好比用模具做产品，而正则就是这个模具，定义一种规则去匹配符合规则的字符。     </li>
+</ul>
+<h5 id="三-正则元字符"><a href="#三-正则元字符" class="headerlink" title="三.正则元字符"></a>三.正则元字符</h5><p>元字符是表示其在正则表达式上下文中的行为，下面介绍常用的元字符以及作用</p>
+<ul>
+<li>“^”：匹配输入字符串的开始位置</li>
+<li>“$”：匹配输入字符串的结束位置</li>
+<li>“<em>“：匹配前面的子表达式零次或多次。例如，zo</em> 能匹配 “z” 以及 “zoo”。* 等价于{0,}。 </li>
+<li>“+”：匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。 </li>
+<li>“?”：匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</li>
+<li>“\”：将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符</li>
+</ul>
+<ul>
+<li>“\b” :匹配一个单词边界，也就是指单词和空格间的位置</li>
+<li>“\D”：匹配一个非数字字符。等价于 [^0-9]</li>
+<li>“\f”： 匹配一个换页符。等价于 \x0c 和 \cL</li>
+<li>“\n”： 匹配一个换行符。等价于 \x0a 和 \cJ </li>
+<li>“\r “：匹配一个回车符。等价于 \x0d 和 \cM</li>
+<li>“\w”：匹配字母，数字，下划线    </li>
+</ul>
+<h5 id="四-正则反义"><a href="#四-正则反义" class="headerlink" title="四.正则反义"></a>四.正则反义</h5><ul>
+<li>“\B”：匹配不是单词开头或结束的位置</li>
+<li>“\S”：匹配任意不是空白符的字符</li>
+<li>“\W” ：匹配任意不是字母，数字，下划线 的字符</li>
+<li>“\D”：匹配任意非数字的字符</li>
+<li>“[^abc]” ：匹配除了abc以外的任意字符   </li>
+</ul>
+<h5 id="五-正则量词"><a href="#五-正则量词" class="headerlink" title="五.正则量词"></a>五.正则量词</h5><p>量词记住三个就行了：贪婪(*)、懒惰/勉强(?)、占有(+)</p>
+<ul>
+<li>“<em>”，重复零次或更多，字符会首先会尽可能多的匹配整个字符串，如果失败，则回退一个字符，例如“a</em>”会匹配a后面的所有的a</li>
+<li>“?” ，重复零次或一次， 是从目标的起始位置开始尝试匹配，每次检查一个字符并且判断是否是要找的字符，直到字符串结尾处，例如：”bbbbbb” 匹配字符串中的b 正则 ： “b?” 只会匹配一次，也就是结果只是单个字符b</li>
+<li>“+” ，重复一次或更多次，它会覆盖整个目标字符串，然后尝试寻找匹配内容 ，但它只尝试一次，例如：”cccccc” 匹配字符串中所有的c 正则： “c+” 会取到字符中所有的c字符</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/06/css变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/06/css变量/" itemprop="url">css变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-06T21:32:53+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一-什么css变量"><a href="#一-什么css变量" class="headerlink" title="一.什么css变量"></a>一.什么css变量</h5><p>简单来说，类似于通常的变量，可以进行赋值和读取。<br>CSS 变量当前有两种形式：</p>
+<ul>
+<li>变量，就是拥有合法标识符和合法的值。可以被使用在任意的地方。可以使用var()函数使用变量。例如：var(–example-variable)会返回–example-variable所对应的值</li>
+<li>自定义属性。这些属性使用–<em>where</em>的特殊格式作为名字。例如–example-variable: 20px;即使一个css声明语句。意思是将20px赋值给–example-varibale变量。     </li>
+</ul>
+<h5 id="二-为什么要了解css变量"><a href="#二-为什么要了解css变量" class="headerlink" title="二.为什么要了解css变量"></a>二.为什么要了解css变量</h5><p>关于为什么在 CSS 中使用变量有很多理由，其中最主要的一点就是它减少了样式代码的重复<br>这样一来你的代码不仅仅是变得更加可读，而且也为你将来想要做出改变提供了更多的灵活性。<br>除此之外 CSS 变量还有很多亮点：</p>
+<ul>
+<li>它不需要经过任何转译步骤，因为它是浏览器原生支持的。所以你不需要像使用 SASS 和 LESS 那样，你不需要任何设置就能直接书写这样的代码。</li>
+<li>它是 DOM 的一部分，JavaScript可以直接访问</li>
+</ul>
+<p>具体的稍后文章会讲到    </p>
+<h5 id="三-变量的声明"><a href="#三-变量的声明" class="headerlink" title="三.变量的声明"></a>三.变量的声明</h5><p>声明变量的时候，变量名前面要加两根连词线（–）。</p>
+<pre><code>body {
+  --a: #7F583F;
+  --b: #F7EFD2;
+}
+.content {
+  --c: #F7EFD2;
+}
+:root {
+  --main-color: #06c;
+}
+</code></pre><p>1.上面代码中，body选择器里面声明了两个变量：–a和–b,他们其实与常规的color，height等正式属性没什么不同，只是他们没有默认值，而这个默认值由你自己给出，所以 css 变量叫自定义属性。<br>2.body，content，root表示变量的作用域，root中放置全局变量，保证任何选择器都可以读取他们。    </p>
+<h5 id="四-变量的读取"><a href="#四-变量的读取" class="headerlink" title="四.变量的读取"></a>四.变量的读取</h5><p>通过 var() 获取，例如</p>
+<pre><code>a {
+  color: var(--a);
+  text-decoration-color: var(--b);
+}
+</code></pre><h5 id="五-JavaScript如何访问css变量"><a href="#五-JavaScript如何访问css变量" class="headerlink" title="五.JavaScript如何访问css变量"></a>五.JavaScript如何访问css变量</h5><pre><code>// 设置变量
+document.body.style.setProperty(&apos;--primary&apos;, &apos;#7F583F&apos;);
+// 读取变量
+document.body.style.getPropertyValue(&apos;--primary&apos;).trim();
+// 删除变量
+document.body.style.removeProperty(&apos;--primary&apos;);
+</code></pre><p>通过JavaScript对css变量的操作，就可以实现用户自定义网页样式，或者一些十分炫酷的渐变效果<br>下面是一个利用 css 变量实现悬浮动画效果<br>css部分</p>
+<pre><code>.button {
+position: relative;
+appearance: none;
+background: #f72359;
+padding: 1em 2em;
+border: none;
+color: white;
+font-size: 1.2em;
+cursor: pointer;
+outline: none;
+overflow: hidden;
+border-radius: 100px;
+}
+
+span {
+    position: relative;
+}
+
+.button::before {
+    --size: 0;  
+    content: &apos;&apos;;
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle closest-side, #4405f7, transparent);
+    transform: translate(-50%, -50%);
+    transition: width .2s ease, height .2s ease;
+}
+
+.button:hover::before {
+    --size: 400px;
+}     
+</code></pre><p>1.radial-gradient：由原点(渐变中心)辐射开的颜色渐变    </p>
+<p>  js部分：得到鼠标的位置   </p>
+<pre><code>document.querySelector(&apos;.button&apos;).onmousemove = (e) =&gt; {
+    const x = e.pageX - e.target.offsetLeft
+    const y = e.pageY - e.target.offsetTop
+
+    e.target.style.setProperty(&apos;--x&apos;, `${ x }px`)
+    e.target.style.setProperty(&apos;--y&apos;, `${ y }px`)
+}
+</code></pre><p>1.pageX、pageY：:对于整个页面来说，包括了被卷去的body部分的长度<br>2.offsetLeft、offsetTop：相对于带有定位的父盒子的左边和上面的坐标</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/学年总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -981,7 +1333,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
